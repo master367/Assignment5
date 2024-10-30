@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Sentences</title>
+    <style>
+        .sentence {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="text">qqqqqqqqq! wwwwwwwwwwwwwwww? tttttttttttt! eeeeeeeeeeeee?</p>
+
+    <script>
+        const paragraph = document.getElementById('text');
+
+        let textContent = paragraph.textContent;
+
+        const sentences = textContent.split(/(?<=[.!?])\s+/);
+
+        const formattedText = sentences.map(sentence => `<span class="sentence">${sentence.trim()}</span>`).join('');
+
+        paragraph.innerHTML = formattedText;
+    </script>
+</body>
+</html>

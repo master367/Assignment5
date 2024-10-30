@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume and Area Calculator</title>
+</head>
+<body>
+
+    <h1>Volume and Area Calculator</h1>
+
+    <div class="task">
+        <h2>Task 11</h2>
+        <label for="radius-sphere">r:</label>
+        <input type="number" id="radius-sphere" step="any">
+        <button onclick="calculateSphereVolume()">Calculate Volume</button>
+        <p id="sphere-volume"></p>
+    </div>
+
+    <div class="task">
+        <h2>Task 12</h2>
+        <label for="radius-cylinder">r:</label>
+        <input type="number" id="radius-cylinder" step="any">
+        <label for="height-cylinder">h:</label>
+        <input type="number" id="height-cylinder" step="any">
+        <button onclick="calculateCylinderVolume()">Calculate Volume</button>
+        <p id="cylinder-volume"></p>
+    </div>
+
+    <div class="task">
+        <h2>Task 13</h2>
+        <label for="radius-cone">r:</label>
+        <input type="number" id="radius-cone" step="any">
+        <label for="height-cone">h:</label>
+        <input type="number" id="height-cone" step="any">
+        <button onclick="calculateConeVolume()">Calculate Volume</button>
+        <p id="cone-volume"></p>
+    </div>
+
+    <div class="task">
+        <h2>Task 14</h2>
+        <label for="base-a">a:</label>
+        <input type="number" id="base-a" step="any">
+        <label for="base-b">b:</label>
+        <input type="number" id="base-b" step="any">
+        <label for="height-prism">h:</label>
+        <input type="number" id="height-prism" step="any">
+        <button onclick="calculatePrismVolume()">Calculate Volume</button>
+        <p id="prism-volume"></p>
+    </div>
+
+    <div class="task">
+        <h2>Task 15</h2>
+        <label for="base-triangle">b:</label>
+        <input type="number" id="base-triangle" step="any">
+        <label for="height-triangle">h:</label>
+        <input type="number" id="height-triangle" step="any">
+        <button onclick="calculateTriangleArea()">Calculate Area</button>
+        <p id="triangle-area"></p>
+    </div>
+
+    <script>
+        //task11
+
+        function calculateSphereVolume() {
+            const r = parseFloat(document.getElementById('radius-sphere').value);
+            const volume = (4/3) * Math.PI * Math.pow(r, 3);
+            document.getElementById('sphere-volume').textContent = `Volume of Sphere: ${volume.toFixed(2)}`;
+        }
+        //task12
+
+        function calculateCylinderVolume() {
+            const r = parseFloat(document.getElementById('radius-cylinder').value);
+            const h = parseFloat(document.getElementById('height-cylinder').value);
+            const volume = Math.PI * Math.pow(r, 2) * h;
+            document.getElementById('cylinder-volume').textContent = `Volume of Cylinder: ${volume.toFixed(2)}`;
+        }
+        //task13
+
+        function calculateConeVolume() {
+            const r = parseFloat(document.getElementById('radius-cone').value);
+            const h = parseFloat(document.getElementById('height-cone').value);
+            const volume = (1/3) * Math.PI * Math.pow(r, 2) * h;
+            document.getElementById('cone-volume').textContent = `Volume of Cone: ${volume.toFixed(2)}`;
+        }
+        //task14
+
+        function calculatePrismVolume() {
+            const a = parseFloat(document.getElementById('base-a').value);
+            const b = parseFloat(document.getElementById('base-b').value);
+            const h = parseFloat(document.getElementById('height-prism').value);
+            const baseArea = a * b; 
+            const volume = baseArea * h;
+            document.getElementById('prism-volume').textContent = `Volume of Prism: ${volume.toFixed(2)}`;
+        }
+        //task15
+
+        function calculateTriangleArea() {
+            const b = parseFloat(document.getElementById('base-triangle').value);
+            const h = parseFloat(document.getElementById('height-triangle').value);
+            const area = 0.5 * b * h;
+            document.getElementById('triangle-area').textContent = `Area of Triangle: ${area.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>

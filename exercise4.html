@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replace with Next Character</title>
+</head>
+<body>
+
+  
+  <input type="text" id="replaceInput">
+  <button onclick="replaceWithNextChar()">Replace Characters</button>
+
+  <script>
+    function replaceWithNextChar() {
+      var input = document.getElementById('replaceInput').value;
+      var replacedString = '';
+
+      for (var i = 0; i < input.length; i++) {
+        var charCode = input.charCodeAt(i);
+        
+        
+        if ((charCode >= 65 && charCode < 90) || (charCode >= 97 && charCode < 122)) {
+          replacedString += String.fromCharCode(charCode + 1);
+        } else if (charCode === 90) { 
+          replacedString += 'A';
+        } else if (charCode === 122) { 
+          replacedString += 'a';
+        } else {
+          replacedString += input[i]; 
+        }
+      }
+
+      alert("Modified string: " + replacedString);
+    }
+  </script>
+
+</body>
+</html>

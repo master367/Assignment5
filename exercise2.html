@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sort Words Alphabetically</title>
+</head>
+<body>
+  <input type="text" id="sentenceInput">
+  <button onclick="sortWords()">Sort Words</button>
+
+  <p id="result"></p>
+
+  <script>
+    function sortWords() {
+      const input = document.getElementById('sentenceInput').value;
+
+      const sortedWords = input.split(' ').map(word => 
+        word.split('').sort((a, b) => a.localeCompare(b)).join('')
+      );
+      document.getElementById('result').textContent = sortedWords.join(' ');
+    }
+  </script>
+
+</body>
+</html>

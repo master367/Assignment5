@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Comparison</title>
+</head>
+<body>
+  <div id="numbers"></div>
+
+  <script>
+    
+    const num1 = Number(prompt("Enter 1 number"));
+    const num2 = Number(prompt("Enter 2 number"));
+    const num3 = Number(prompt("Enter 3 number"));
+
+   
+    const distance1 = 100 - num1;
+    const distance2 = 100 - num2;
+    const distance3 = 100 - num3;
+
+
+    let nearest = num1;
+    let farthest = num1;
+
+    if (distance2 < 100 - nearest) nearest = num2;
+    if (distance3 < 100 - nearest) nearest = num3;
+
+    if (distance2 > 100 - farthest) farthest = num2;
+    if (distance3 > 100 - farthest) farthest = num3;
+
+    const numbersDiv = document.getElementById("numbers");
+    numbersDiv.innerHTML = `
+      <p>Number 1: ${num1}</p>
+      <p>Number 2: ${num2}</p>
+      <p>Number 3: ${num3}</p>
+      <p>Nearest to 100: ${nearest}</p>
+      <p>Farthest from 100: ${farthest}</p>
+    `;
+  </script>
+</body>
+</html>
