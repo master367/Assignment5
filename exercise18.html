@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #bb398e;
+            border-radius: 10px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .box.drag-over {
+            background-color: #e9ecef;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: #ec074c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: grab;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="dropzone1">Drop Zone 1</div>
+        <div class="box" id="dropzone2">Drop Zone 2</div>
+    </div>
+    <div class="item" draggable="true" id="draggable">Drag Me</div>
+
+    <script>
+        const draggableItem = document.getElementById("draggable");
+        const dropzones = document.querySelectorAll(".box");
+
+        draggableItem.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", e.target.id);
+            setTimeout(() => {
+                e.target.style.display = "none"; 
+            }, 0);
+        });
+
+        draggableItem.addEventListener("dragend", (e) => {
+            e.target.style.display = "flex"; 
+        });
+
+        dropzones.forEach((dropzone) => {
+            dropzone.addEventListener("dragover", (e) => {
+                e.preventDefault(); 
+                dropzone.classList.add("drag-over");
+            });
+
+            dropzone.addEventListener("dragleave", () => {
+                dropzone.classList.remove("drag-over"); 
+            });
+
+            dropzone.addEventListener("drop", (e) => {
+                e.preventDefault();
+                const id = e.dataTransfer.getData("text/plain");
+                const draggedElement = document.getElementById(id);
+                dropzone.appendChild(draggedElement); 
+                dropzone.classList.remove("drag-over");
+            });
+        });
+    </script>
+</body>
+</html>

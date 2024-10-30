@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .choices {
+            margin: 20px 0;
+        }
+
+        .choice {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #c029b8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .choice:hover {
+            background-color: #ba2bd3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Rock, Paper, Scissors</h1>
+        <div class="choices">
+            <button class="choice" id="rock">Rock</button>
+            <button class="choice" id="paper">Paper</button>
+            <button class="choice" id="scissors">Scissors</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const choices = document.querySelectorAll('.choice');
+        const resultDisplay = document.getElementById('result');
+        
+
+        const choicesArray = ['rock', 'paper', 'scissors'];
+
+        choices.forEach(choice => {
+            choice.addEventListener('click', () => {
+                const userChoice = choice.id;
+                const computerChoice = getComputerChoice();
+                const result = determineWinner(userChoice, computerChoice);
+                displayResult(result, computerChoice);
+            });
+        });
+
+        resetButton.addEventListener('click', () => {
+            resetGame();
+        });
+
+        function getComputerChoice() {
+            const randomIndex = Math.floor(Math.random() * choicesArray.length);
+            return choicesArray[randomIndex];
+        }
+
+        function determineWinner(userChoice, computerChoice) {
+            if (userChoice === computerChoice) {
+                return "It's a draw!";
+            } else if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                return 'You win!';
+            } else {
+                return 'You lose!';
+            }
+        }
+
+        function displayResult(result, computerChoice) {
+            resultDisplay.textContent = `Computer chose: ${computerChoice}. ${result}`;
+            resetButton.style.display = 'block'; 
+        }
+
+        
+    </script>
+</body>
+</html>
