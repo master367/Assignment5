@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайдбар с плавным сдвигом</title>
+    <style>
+        body {
+            margin-top: 0%;
+            margin-left: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: -250px; 
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            transition: left 0.3s ease; 
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main {
+            transition: margin-left 0.3s ease;
+            padding: 20px;
+            padding-left: 20px; 
+        }
+
+        .main.open {
+            margin-left: 250px; 
+        }
+
+        
+        .sidebar.open {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <h2>Меню сайдбара</h2>
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Услуги</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </div>
+    <div id="main" class="main">
+        <button id="toggle-btn">Показать/Скрыть сайдбар</button>
+        <h1>Основное содержимое</h1>
+        <p>Это область основного содержимого.</p>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('main');
+        const toggleBtn = document.getElementById('toggle-btn');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            main.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
