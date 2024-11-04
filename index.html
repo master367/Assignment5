@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Replacement</title>
+</head>
+<body>
+    <input type="text" id="midterm" placeholder="midterm">
+    <input type="text" id="endterm" placeholder="endterm">
+    <button onclick="calc()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calc(){
+            const mid = Number(document.getElementById("midterm").value);
+            const end = Number(document.getElementById("endterm").value);
+
+            const regterm = mid * 0.3 + end * 0.3;
+            
+            var stepa = (70 - regterm) / 0.4;
+            var povyshka = (90 - regterm) / 0.4;
+            
+
+            if(stepa < 50){
+                stepa = 50;
+            }
+
+            if(povyshka > 100){
+                povyshka = "unreal"
+            }
+
+            const res = document.getElementById("result");
+
+            res.innerHTML = `
+            <p>степуха: ${stepa}</p> 
+            <p>повышка: ${povyshka}</p>
+            `;
+
+
+        }
+    </script>
+</body>
+</html>

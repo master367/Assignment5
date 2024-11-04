@@ -1,36 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First Non-Repeated Character</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Non-Repeated Character</title>
 </head>
 <body>
-  <input type="text" id="charInput">
-  <button onclick="findFirstNonRepeated()">Find Character</button>
+    <h1>First Non-Repeated Character</h1>
+    <div id="result"></div>
 
-  <p id="result"></p>
+    <script>
+        const input = prompt("Enter a string:");
+        const charCount = {};
 
-  <script>
-    function findFirstNonRepeated() {
-      var input = document.getElementById('charInput').value;
-      var charCount = {};
-
-      for (var i = 0; i < input.length; i++) {
-        var char = input[i];
-        charCount[char] = (charCount[char] || 0) + 1;
-      }
-     
-      for (var i = 0; i < input.length; i++) {
-        if (charCount[input[i]] === 1) {
-          document.getElementById('result').textContent = `First non-repeated character: ${input[i]}`;
-          return;
+        for (const char of input) {
+            charCount[char] = (charCount[char] || 0) + 1;
         }
-      }
 
-      document.getElementById('result').textContent = "No unique characters found";
-    }
-  </script>
-
+        const firstNonRepeated = Object.keys(charCount).find(char => charCount[char] === 1);
+        document.getElementById('result').innerHTML = `First non-repeated character: ${firstNonRepeated || 'None'}`;
+    </script>
 </body>
 </html>
